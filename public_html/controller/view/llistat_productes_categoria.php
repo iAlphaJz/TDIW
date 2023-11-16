@@ -29,47 +29,24 @@
         padding: 5px;
     }
 </style>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <div class="container-fluid">
     <h2 class="mb-4"><?php echo $title; ?></h2>
     <div class="row">
         <?php foreach ($products as $product): ?>
-            <div class="product-container mb-4">
-                <div class="product-card">
-                    <button class="product-link" data-toggle="modal" data-target="#productModal<?php echo $product['id']; ?>">Ver Detalles</button>
-                    <img src="<?php echo $product['img']; ?>" alt="<?php echo $product['nom']; ?>">
-                    <div class="product-details">
-                        <strong><?php echo $product['nom']; ?></strong><br>
-                        <?php echo $product['descriptio']; ?><br>
-                        <small><?php echo $product['preu']; ?></small>
-                    </div>
-                </div>
-            </div>
-            <!-- Modal para mostrar los detalles del producto -->
-            <div class="modal fade" id="productModal<?php echo $product['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><?php echo $product['nom']; ?></h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Aquí muestra los detalles del producto -->
+            <!-- Envuelve cada product-container con un enlace -->
+            <a href="https://tdiw-i1.deic-docencia.uab.cat/index.php?accio=detall&product_id=<?php echo $product['id']; ?>" class="product-link">
+                <div class="product-container mb-4">
+                    <div class="product-card">
+                        <img src="<?php echo $product['img']; ?>" alt="<?php echo $product['nom']; ?>">
+                        <div class="product-details">
+                            <strong><?php echo $product['nom']; ?></strong><br>
                             <?php echo $product['descriptio']; ?><br>
                             <small><?php echo $product['preu']; ?></small>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         <?php endforeach; ?>
     </div>
 </div>
